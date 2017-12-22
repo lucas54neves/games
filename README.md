@@ -1,5 +1,4 @@
 # games
-Sistema de cadastro de games
 Projeto para a matéria de Introdução aos Algoritmos do curso de Ciências da Computação da Univerdade Federal de Lavras de um sistema de cadastro de games.
 Membros do grupo:
 1) Lucas Neves
