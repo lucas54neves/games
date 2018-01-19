@@ -17,7 +17,22 @@ struct game
 // Subprogramas secundários
 void insercaoDados () {}
 void atualizacaoDados () {}
-void buscaDados () {}
+
+/*
+*  Função para uma busca de um ou mais jogo dado um certo ano requisitado pelo usuário
+*/
+void buscaDados (game dadosGame[]; int limite) {
+	int anoBuscado, j = 0;
+	game aux[limite];
+	cout << "Digite o ano que deseja buscar: ";
+	cin >> anoBuscado;
+	for (int i; i < limite; i++) {
+		if (dadosGame[i].ano == anoBuscado) {
+			aux[j++] = dadosGame[i];
+		}
+	}
+}
+
 void ordenacaoDadosCadastrados (game dadosGame[]; int limite)
 {
 	game aux;
