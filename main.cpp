@@ -18,7 +18,31 @@ struct game
 void insercaoDados () {}
 void atualizacaoDados () {}
 void buscaDados () {}
-void ordenacaoDadosCadastrados () {}
+void ordenacaoDadosCadastrados (game dadosGame[]; int limite)
+{
+	game aux;
+	for (int x = 0; x < limite; x++)
+	{
+		for (int y = x + 1; y < limite; y++)
+		{
+			if (dadosGame[x].anoLancamento > dadosGame[y].anoLancamento)
+			{
+				aux.nome = dadosGame[x].nome;
+				aux.anoLancamento = dadosGame[x].anoLancamento;
+				aux.plataforma = dadosGame[x].plataforma;
+				aux.descricao = dadosGame[x].descricao;
+				dadosGame[x].nome = dadosGame[y].nome;
+				dadosGame[x].anoLancamento = dadosGame[y].anoLancamento;
+				dadosGame[x].plataforma = dadosGame[y].plataforma;
+				dadosGame[x].descricao = dadosGame[y].descricao;
+				dadosGame[y].nome = aux.nome;
+				dadosGame[y].anoLancamento = aux.anoLancamento;
+				dadosGame[y].plataforma = aux.plataforma;
+				dadosGame[y].descricao = aux.descricao;
+			}
+		}
+	}
+}
 
 // Subprograma principal
 int main ()
@@ -48,7 +72,7 @@ crescente<<endl
 					buscaDados();
 					break;
 				case 4:
-					ordenacaoDadosCadastrados();
+					ordenacaoDadosCadastrados(dadosGame, limite);
 					break;
 				case 0:
 					return 0;
