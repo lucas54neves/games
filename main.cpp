@@ -14,6 +14,22 @@ struct game
 	string descricao;
 };
 
+/*
+*  Função para a impressão à tela de um vetor de game 
+*/
+void print (game dadosGame[], int limite) {
+	cout << "_______________________________________________" << endl;
+	for (int i = 0; i < limite; i++) {
+		if (dadosGame[i] != null) {
+			cout << "Nome: " << dadosGame[i].nome << endl;
+			cout << "Ano de Lançamento: " << dadosGame[i].anoLancamento << endl;
+			cout << "Plataforma: " << dadosGame[i].plataforma << endl;
+			cout << "Descricao: " << dadosGame[i].descricao << endl;
+			cout << "_______________________________________________" << endl;
+		}
+	}
+}
+
 // Subprogramas secundários
 void insercaoDados () {}
 void atualizacaoDados () {}
