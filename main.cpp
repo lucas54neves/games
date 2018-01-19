@@ -18,7 +18,7 @@ struct game
 void insercaoDados () {}
 void atualizacaoDados () {}
 void buscaDados () {}
-void listagemDadosCadastrados () {}
+void ordenacaoDadosCadastrados () {}
 
 // Subprograma principal
 int main ()
@@ -48,7 +48,7 @@ crescente<<endl
 					buscaDados();
 					break;
 				case 4:
-					listagemDadosCadastrados();
+					ordenacaoDadosCadastrados();
 					break;
 				case 0:
 					return 0;
