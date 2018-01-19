@@ -24,7 +24,8 @@ void listagemDadosCadastrados () {}
 int main ()
 {
 	setlocale(LC_ALL, "Portuguese");
-	int opcao=-1;
+	int opcao=-1, limite = 250000;
+	game dadosGame[limite];
 	while (opcao!=0)
 	{
 		cout<<"Entre com a operação desejada"<<endl
