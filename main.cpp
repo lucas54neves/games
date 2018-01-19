@@ -47,6 +47,7 @@ void buscaDados (game dadosGame[]; int limite) {
 			aux[j++] = dadosGame[i];
 		}
 	}
+	print(aux);
 }
 
 void ordenacaoDadosCadastrados (game dadosGame[]; int limite)
