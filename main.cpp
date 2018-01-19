@@ -52,14 +52,13 @@ int main ()
 	game dadosGame[limite];
 	while (opcao!=0)
 	{
-		cout<<"Entre com a operação desejada"<<endl
-			<<"1 para inserção de dados<<endl
-			<<"2 para atualização de dados""<<endl
-			<<"3 para busca de dados"<<endl
-			<<"4 para listagem dos dados cadastrados em ordem
-crescente<<endl
-			<<"0 para sair<<endl;
-			cin>>opcao;
+		cout << "Entre com a operação desejada" << endl
+			<< "1 para inserção de dados" << endl
+			<< "2 para atualização de dados" << endl
+			<< "3 para busca de dados" << endl
+			<< "4 para listagem dos dados cadastrados em ordem crescente" << endl
+			<< "0 para sair" << endl;
+			cin >> opcao;
 			switch (opcao)
 			{
 				case 1:
@@ -77,8 +76,7 @@ crescente<<endl
 				case 0:
 					return 0;
 				default:
-					cout<<"Teste para opção não 
-cadastrada"<<endl;
+					cout << "Teste para opção não cadastrada" << endl;
 			}
 	}
 }
