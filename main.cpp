@@ -18,10 +18,10 @@ struct game
 /*
 * Função para ler o arquivo de dados
 */
-game* lerArquivo() {
+game* lerArquivo(int* tamanho) {
 	ifstream entrada;
-	game* bloco;
 	entrada.open("saida.dat", ios::binary);
+	game* bloco;
   	if (entrada) {
 		entrada.seekg (0, entrada.end);
 		int tam = entrada.tellg();
@@ -32,6 +32,7 @@ game* lerArquivo() {
 			entrada.read (reinterpret_cast<char *> (&bloco[i]), sizeof(game)); 
 		}   
 		entrada.close();
+		*tamanho = qtd;
 	} else {
 		cout << "nao consegui abrir, masta";
 	}
@@ -43,9 +44,9 @@ game* lerArquivo() {
 /*
 *  Função para a impressão à tela de um vetor de game 
 */
-void print (game dadosGame[], int limite) {
+void print (game dadosGame[], int quant) {
 	cout << "_______________________________________________" << endl;
-	for (int i = 0; i < limite; i++) {
+	for (int i = 0; i < quant; i++) {
 		cout << "Nome: " << dadosGame[i].nome << endl;
 		cout << "Ano de Lançamento: " << dadosGame[i].anoLancamento << endl;
 		cout << "Plataforma: " << dadosGame[i].plataforma << endl;
@@ -68,7 +69,7 @@ void insercaoDados () {
 	cin >> jogo[0].anoLancamento;
 	cout << "Plataforma: ";
 	cin >> jogo[0].plataforma;
-	cout << "Descrição";
+	cout << "Descrição: ";
 	cin >> jogo[0].descricao;
 
 	ofstream saida("saida.dat", ios::binary|ios::app);
@@ -99,7 +100,7 @@ void buscaDados (game dadosGame[], int limite) {
 			aux[j++] = dadosGame[i];
 		}
 	}
-	print(aux, limite);
+	//print(aux, limite);
 }
 
 void ordenacaoDadosCadastrados (game dadosGame[], int limite)
@@ -133,8 +134,10 @@ void ordenacaoDadosCadastrados (game dadosGame[], int limite)
 int main () {
 	setlocale(LC_ALL, "Portuguese");
 	int opcao=-1,
-		limite = 250000;
-	game dadosGame[limite];
+		limite = 100;
+	game *dadosGame;
+	int tam;
+	
 	while (opcao!=0) {
 		cout << "Entre com a operação desejada" << endl
 			 << "1 para inserção de dados" << endl
@@ -154,7 +157,13 @@ int main () {
 				buscaDados(dadosGame, limite);
 				break;
 			case 4:
-				ordenacaoDadosCadastrados(dadosGame, limite);
+				dadosGame = lerArquivo(&tam);
+				ordenacaoDadosCadastrados(dadosGame, tam);
+				print(dadosGame, tam);
+				break;
+			case 5:
+				dadosGame = lerArquivo(&tam);
+				print(dadosGame, tam);
 				break;
 			case 0:
 				return 0;
