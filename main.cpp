@@ -1,3 +1,4 @@
+
 // Bibliotecas
 #include <iostream>
 #include <string>
@@ -100,18 +101,9 @@ void ordenacaoDadosCadastrados (game dadosGame[], int limite)
 		{
 			if (dadosGame[j].anoLancamento > dadosGame[j+1].anoLancamento)
 			{
-				aux.nome[100] = dadosGame[j].nome[100];
-				aux.anoLancamento = dadosGame[j].anoLancamento;
-				aux.plataforma[100] = dadosGame[j].plataforma[100];
-				aux.descricao[700] = dadosGame[j].descricao[700];
-				dadosGame[j].nome[100] = dadosGame[j+1].nome[100];
-				dadosGame[j].anoLancamento = dadosGame[j+1].anoLancamento;
-				dadosGame[j].plataforma[100] = dadosGame[j+1].plataforma[100];
-				dadosGame[j].descricao[700] = dadosGame[j+1].descricao[700];
-				dadosGame[j+1].nome[100] = aux.nome[100];
-				dadosGame[j+1].anoLancamento = aux.anoLancamento;
-				dadosGame[j+1].plataforma[100] = aux.plataforma[100];
-				dadosGame[j+1].descricao[700] = aux.descricao[700];
+				aux = dadosGame[j];
+				dadosGame[j] = dadosGame[j+1];
+				dadosGame[j+1] = aux;
 			}
 		}
 	}
