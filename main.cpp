@@ -75,6 +75,8 @@ void insercaoDados () {
 	ofstream saida("saida.dat", ios::binary|ios::app);
 	saida.write ((const char *) (&jogo[0]), sizeof(game));
 	saida.close();
+	
+	cout << "Inserido com sucesso!" << endl;
 	/*
     ofstream arquivo("RegistroDosJogos.txt", ios::app);
     arquivo << dadosGame.nome;
