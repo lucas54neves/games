@@ -31,23 +31,11 @@ void print (game dadosGame[], int limite) {
 }
 
 // Subprogramas secundários
-
-/*
-*   Função para inserir os dados de um jogo (somente 1 por chamada)
-*/
-void insercaoDados (game dadosGame[]) {
-    ofstream arquivo("RegistroDosJogos.txt", ios::app);
-    arquivo << dadosGame.nome;
-    arquivo << dadosGame.anoLancamento;
-    arquivo << dadosGame.plataforma;
-    arquivo << dadosGame.descricao;
-    arquivo.close();
-}
-
+void insercaoDados () {}
 void atualizacaoDados () {}
 
 /*
-*  Função para uma busca de um ou mais jogos dado um certo ano requisitado pelo usuário
+*  Função para uma busca de um ou mais jogo dado um certo ano requisitado pelo usuário
 */
 void buscaDados (game dadosGame[]; int limite) {
 	int anoBuscado, j = 0;
@@ -55,7 +43,7 @@ void buscaDados (game dadosGame[]; int limite) {
 	cout << "Digite o ano que deseja buscar: ";
 	cin >> anoBuscado;
 	for (int i; i < limite; i++) {
-		if (dadosGame[i].ano == anoBuscado) { //acho que esse ano deveria ser anoLancamento
+		if (dadosGame[i].ano == anoBuscado) {
 			aux[j++] = dadosGame[i];
 		}
 	}
@@ -106,17 +94,13 @@ int main ()
 			switch (opcao)
 			{
 				case 1:
-                    cin >> dadosGame.nome;
-                    cin >> dadosGame.anoLancamento;
-                    cin >> dadosGame.plataforma;
-                    cin >> dadosGame.descricao;
-					insercaoDados(dadosGame);
+					insercaoDados();
 					break;
 				case 2:
 					atualizacaoDados();
 					break;
 				case 3:
-					buscaDados(dadosGame, limite);
+					buscaDados();
 					break;
 				case 4:
 					ordenacaoDadosCadastrados(dadosGame, limite);
