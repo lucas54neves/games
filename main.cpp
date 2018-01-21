@@ -1,6 +1,7 @@
 // Bibliotecas
 #include <iostream>
 #include <string>
+#include <fstream>   
 #include <locale.h>
 
 using namespace std;
@@ -13,6 +14,31 @@ struct game
 	char plataforma[100];
 	char descricao[700];
 };
+
+/*
+* Função para ler o arquivo de dados
+*/
+game* lerArquivo() {
+	ifstream entrada;
+	game* bloco;
+	entrada.open("saida.dat", ios::binary);
+  	if (entrada) {
+		entrada.seekg (0, entrada.end);
+		int tam = entrada.tellg();
+		entrada.seekg (0, entrada.beg);
+		bloco = new game [tam/sizeof(game)];		
+		int qtd = tam/sizeof(game);
+		for (int i = 0; i < qtd; i++) {
+			entrada.read (reinterpret_cast<char *> (&bloco[i]), sizeof(game)); 
+		}   
+		entrada.close();
+	} else {
+		cout << "nao consegui abrir, masta";
+	}
+	return bloco;
+}
+
+
 
 /*
 *  Função para a impressão à tela de um vetor de game 
