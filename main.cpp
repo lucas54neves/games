@@ -108,25 +108,24 @@ void buscaDados (game dadosGame[], int limite) {
 void ordenacaoDadosCadastrados (game dadosGame[], int limite)
 {
 	game aux;
-	for (int x = 0; x < limite; x++)
+	for (int x = 1; x < limite; x++)
 	{
-		for (int y = x + 1; y < limite; y++)
+		for (int y = 0; y < (limite-1); y++)
 		{
-			if (dadosGame[x].anoLancamento > dadosGame[y].anoLancamento)
+			if (dadosGame[y].anoLancamento > dadosGame[y+1].anoLancamento)
 			{
-				/*
-				aux.nome = dadosGame[x].nome;
-				aux.anoLancamento = dadosGame[x].anoLancamento;
-				aux.plataforma = dadosGame[x].plataforma;
-				aux.descricao = dadosGame[x].descricao;
-				dadosGame[x].nome = dadosGame[y].nome;
-				dadosGame[x].anoLancamento = dadosGame[y].anoLancamento;
-				dadosGame[x].plataforma = dadosGame[y].plataforma;
-				dadosGame[x].descricao = dadosGame[y].descricao;
-				dadosGame[y].nome = aux.nome;
-				dadosGame[y].anoLancamento = aux.anoLancamento;
-				dadosGame[y].plataforma = aux.plataforma;
-				dadosGame[y].descricao = aux.descricao;*/
+				aux.nome = dadosGame[y].nome;
+				aux.anoLancamento = dadosGame[y].anoLancamento;
+				aux.plataforma = dadosGame[y].plataforma;
+				aux.descricao = dadosGame[y].descricao;
+				dadosGame[y].nome = dadosGame[y+1].nome;
+				dadosGame[y].anoLancamento = dadosGame[y+1].anoLancamento;
+				dadosGame[y].plataforma = dadosGame[y+1].plataforma;
+				dadosGame[y].descricao = dadosGame[y+1].descricao;
+				dadosGame[y+1].nome = aux.nome;
+				dadosGame[y+1].anoLancamento = aux.anoLancamento;
+				dadosGame[y+1].plataforma = aux.plataforma;
+				dadosGame[y+1].descricao = aux.descricao;
 			}
 		}
 	}
