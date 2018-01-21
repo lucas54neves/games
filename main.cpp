@@ -15,9 +15,8 @@ struct game
 	char descricao[700];
 };
 
-/*
-* Função para ler o arquivo de dados
-*/
+// Subprogramas secundários
+// Subprograma para ler o arquivo de dados
 game* lerArquivo(int* tamanho) {
 	ifstream entrada;
 	entrada.open("saida.dat", ios::binary);
@@ -38,12 +37,7 @@ game* lerArquivo(int* tamanho) {
 	}
 	return bloco;
 }
-
-
-
-/*
-*  Função para a impressão à tela de um vetor de game 
-*/
+// Subprograma para a impressão à tela de um vetor de game 
 void print (game dadosGame[], int quant) {
 	cout << "_______________________________________________" << endl;
 	for (int i = 0; i < quant; i++) {
@@ -54,12 +48,7 @@ void print (game dadosGame[], int quant) {
 		cout << "_______________________________________________" << endl;
 	}
 }
-
-// Subprogramas secundários
-
-/*
-*   Função para inserir os dados de um jogo (somente 1 por chamada)
-*/
+// Subprograma para inserir os dados de um jogo (somente 1 por chamada)
 void insercaoDados () {
 	game* jogo = new game [1];
 	
@@ -86,12 +75,9 @@ void insercaoDados () {
     arquivo.close();
 	*/
 }
-
+// Subprograma para a atualização dos dados cadastrados
 void atualizacaoDados () {}
-
-/*
-*  Função para uma busca de um ou mais jogos dado um certo ano requisitado pelo usuário
-*/
+// Subprograma para uma busca de um ou mais jogos dado um certo ano requisitado pelo usuário
 void buscaDados (game dadosGame[], int limite) {
 	int anoBuscado, j = 0;
 	game aux[limite];
@@ -104,7 +90,7 @@ void buscaDados (game dadosGame[], int limite) {
 	}
 	print(aux, j);
 }
-
+// Subprograma para a ordenação dos dados cadastrados
 void ordenacaoDadosCadastrados (game dadosGame[], int limite)
 {
 	game aux;
