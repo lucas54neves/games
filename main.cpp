@@ -8,10 +8,10 @@ using namespace std;
 // Registro para o game
 struct game
 {
-	string nome;
+	char nome[100];
 	int anoLancamento;
-	string plataforma;
-	string descricao;
+	char plataforma[100];
+	char descricao[700];
 };
 
 /*
