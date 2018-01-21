@@ -55,7 +55,7 @@ void buscaDados (game dadosGame[]; int limite) {
 	cout << "Digite o ano que deseja buscar: ";
 	cin >> anoBuscado;
 	for (int i; i < limite; i++) {
-		if (dadosGame[i].ano == anoBuscado) { //acho que esse ano deveria ser anoLancamento
+		if (dadosGame[i].anoLancamento == anoBuscado) {
 			aux[j++] = dadosGame[i];
 		}
 	}
