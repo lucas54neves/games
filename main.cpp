@@ -130,38 +130,36 @@ void ordenacaoDadosCadastrados (game dadosGame[], int limite)
 }
 
 // Subprograma principal
-int main ()
-{
+int main () {
 	setlocale(LC_ALL, "Portuguese");
-	int opcao=-1, limite = 250000;
+	int opcao=-1,
+		limite = 250000;
 	game dadosGame[limite];
-	while (opcao!=0)
-	{
+	while (opcao!=0) {
 		cout << "Entre com a operação desejada" << endl
-			<< "1 para inserção de dados" << endl
-			<< "2 para atualização de dados" << endl
-			<< "3 para busca de dados" << endl
-			<< "4 para listagem dos dados cadastrados em ordem crescente" << endl
-			<< "0 para sair" << endl;
-			cin >> opcao;
-			switch (opcao)
-			{
-				case 1:
-					insercaoDados();
-					break;
-				case 2:
-					atualizacaoDados();
-					break;
-				case 3:
-					buscaDados(dadosGame, limite);
-					break;
-				case 4:
-					ordenacaoDadosCadastrados(dadosGame, limite);
-					break;
-				case 0:
-					return 0;
-				default:
-					cout << "Teste para opção não cadastrada" << endl;
-			}
+			 << "1 para inserção de dados" << endl
+			 << "2 para atualização de dados" << endl
+			 << "3 para busca de dados" << endl
+			 << "4 para listagem dos dados cadastrados em ordem crescente" << endl
+			 << "0 para sair" << endl;
+		cin >> opcao;
+		switch (opcao) {
+			case 1:
+				insercaoDados();
+				break;
+			case 2:
+				atualizacaoDados();
+				break;
+			case 3:
+				buscaDados(dadosGame, limite);
+				break;
+			case 4:
+				ordenacaoDadosCadastrados(dadosGame, limite);
+				break;
+			case 0:
+				return 0;
+			default:
+				cout << "Teste para opção não cadastrada" << endl;
+		}
 	}
 }
