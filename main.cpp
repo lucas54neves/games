@@ -46,13 +46,11 @@ game* lerArquivo() {
 void print (game dadosGame[], int limite) {
 	cout << "_______________________________________________" << endl;
 	for (int i = 0; i < limite; i++) {
-		if (dadosGame[i] != null) {
-			cout << "Nome: " << dadosGame[i].nome << endl;
-			cout << "Ano de Lançamento: " << dadosGame[i].anoLancamento << endl;
-			cout << "Plataforma: " << dadosGame[i].plataforma << endl;
-			cout << "Descricao: " << dadosGame[i].descricao << endl;
-			cout << "_______________________________________________" << endl;
-		}
+		cout << "Nome: " << dadosGame[i].nome << endl;
+		cout << "Ano de Lançamento: " << dadosGame[i].anoLancamento << endl;
+		cout << "Plataforma: " << dadosGame[i].plataforma << endl;
+		cout << "Descricao: " << dadosGame[i].descricao << endl;
+		cout << "_______________________________________________" << endl;
 	}
 }
 
@@ -91,7 +89,7 @@ void atualizacaoDados () {}
 /*
 *  Função para uma busca de um ou mais jogos dado um certo ano requisitado pelo usuário
 */
-void buscaDados (game dadosGame[]; int limite) {
+void buscaDados (game dadosGame[], int limite) {
 	int anoBuscado, j = 0;
 	game aux[limite];
 	cout << "Digite o ano que deseja buscar: ";
@@ -101,10 +99,10 @@ void buscaDados (game dadosGame[]; int limite) {
 			aux[j++] = dadosGame[i];
 		}
 	}
-	print(aux);
+	print(aux, limite);
 }
 
-void ordenacaoDadosCadastrados (game dadosGame[]; int limite)
+void ordenacaoDadosCadastrados (game dadosGame[], int limite)
 {
 	game aux;
 	for (int x = 0; x < limite; x++)
@@ -113,6 +111,7 @@ void ordenacaoDadosCadastrados (game dadosGame[]; int limite)
 		{
 			if (dadosGame[x].anoLancamento > dadosGame[y].anoLancamento)
 			{
+				/*
 				aux.nome = dadosGame[x].nome;
 				aux.anoLancamento = dadosGame[x].anoLancamento;
 				aux.plataforma = dadosGame[x].plataforma;
@@ -124,7 +123,7 @@ void ordenacaoDadosCadastrados (game dadosGame[]; int limite)
 				dadosGame[y].nome = aux.nome;
 				dadosGame[y].anoLancamento = aux.anoLancamento;
 				dadosGame[y].plataforma = aux.plataforma;
-				dadosGame[y].descricao = aux.descricao;
+				dadosGame[y].descricao = aux.descricao;*/
 			}
 		}
 	}
@@ -148,11 +147,7 @@ int main ()
 			switch (opcao)
 			{
 				case 1:
-                    cin >> dadosGame.nome;
-                    cin >> dadosGame.anoLancamento;
-                    cin >> dadosGame.plataforma;
-                    cin >> dadosGame.descricao;
-					insercaoDados(dadosGame);
+					insercaoDados();
 					break;
 				case 2:
 					atualizacaoDados();
