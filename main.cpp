@@ -95,12 +95,12 @@ void buscaDados (game dadosGame[], int limite) {
 	game aux[limite];
 	cout << "Digite o ano que deseja buscar: ";
 	cin >> anoBuscado;
-	for (int i; i < limite; i++) {
+	for (int i = 0; i < limite; i++) {
 		if (dadosGame[i].anoLancamento == anoBuscado) {
 			aux[j++] = dadosGame[i];
 		}
 	}
-	//print(aux, limite);
+	print(aux, j);
 }
 
 void ordenacaoDadosCadastrados (game dadosGame[], int limite)
@@ -133,12 +133,12 @@ void ordenacaoDadosCadastrados (game dadosGame[], int limite)
 // Subprograma principal
 int main () {
 	setlocale(LC_ALL, "Portuguese");
-	int opcao=-1,
-		limite = 100;
+	int opcao=-1;
 	game *dadosGame;
 	int tam;
 	
 	while (opcao!=0) {
+		system("cls");
 		cout << "Entre com a operação desejada" << endl
 			 << "1 para inserção de dados" << endl
 			 << "2 para atualização de dados" << endl
@@ -154,7 +154,8 @@ int main () {
 				atualizacaoDados();
 				break;
 			case 3:
-				buscaDados(dadosGame, limite);
+				dadosGame = lerArquivo(&tam);
+				buscaDados(dadosGame, tam);
 				break;
 			case 4:
 				dadosGame = lerArquivo(&tam);
@@ -170,5 +171,6 @@ int main () {
 			default:
 				cout << "Teste para opção não cadastrada" << endl;
 		}
+		system("pause");
 	}
 }
