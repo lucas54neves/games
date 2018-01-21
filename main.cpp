@@ -61,13 +61,29 @@ void print (game dadosGame[], int limite) {
 /*
 *   Função para inserir os dados de um jogo (somente 1 por chamada)
 */
-void insercaoDados (game dadosGame[]) {
+void insercaoDados () {
+	game* jogo = new game [1];
+	
+	cout << "Nome do jogo: ";
+	cin >> jogo[0].nome;
+	cout << "Ano de Lançamento: ";
+	cin >> jogo[0].anoLancamento;
+	cout << "Plataforma: ";
+	cin >> jogo[0].plataforma;
+	cout << "Descrição";
+	cin >> jogo[0].descricao;
+
+	ofstream saida("saida.dat", ios::binary|ios::app);
+	saida.write ((const char *) (&jogo[0]), sizeof(game));
+	saida.close();
+	/*
     ofstream arquivo("RegistroDosJogos.txt", ios::app);
     arquivo << dadosGame.nome;
     arquivo << dadosGame.anoLancamento;
     arquivo << dadosGame.plataforma;
     arquivo << dadosGame.descricao;
     arquivo.close();
+	*/
 }
 
 void atualizacaoDados () {}
