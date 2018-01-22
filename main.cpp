@@ -69,7 +69,7 @@ void insercaoDados () {
 
 }
 // Subprograma para a atualização dos dados cadastrados
-void atualizacaoDados () {
+void atualizacaoDados (game dadosGame, int &tam) {
 		
 	cout << "Nome do jogo a ser atualizado: ";
 	cin >> dadosGame[0].nome;
@@ -148,7 +148,7 @@ int main () {
 				insercaoDados();
 				break;
 			case 2:
-				atualizacaoDados();
+				atualizacaoDados(dadosGame, tam);
 				break;
 			case 3:
 				dadosGame = lerArquivo(&tam);
