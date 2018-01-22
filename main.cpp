@@ -34,6 +34,8 @@ game* lerArquivo(int* tamanho) {
 		}   
 		entrada.close();
 		*tamanho = qtd;
+	} else {
+		*tamanho = 0;
 	}
 
 	return bloco;
@@ -70,7 +72,7 @@ void insercaoDados (int tam) {
 	saida.write ((const char *) (&jogo[0]), sizeof(game));
 	saida.close();
 	
-	cout << "Inserido com sucesso!" << endl;
+	cout << "Jogo com id " << jogo[0].id  << " inserido com sucesso!" << endl;
 }
 // Subprograma para a atualização dos dados cadastrados
 void atualizacaoDados (game* jogos, int tam) {
