@@ -41,9 +41,9 @@ game* lerArquivo(int* tamanho) {
 	return bloco;
 }
 // Subprograma para a impressão à tela de um vetor de game 
-void print (game dadosGame[], int quant) {
+void print (game dadosGame[], int tam) {
 	cout << "_______________________________________________" << endl;
-	for (int i = 0; i < quant; i++) {
+	for (int i = 0; i < tam; i++) {
 		cout << "ID: " << dadosGame[i].id << endl;
 		cout << "Nome: " << dadosGame[i].nome << endl;
 		cout << "Ano de Lançamento: " << dadosGame[i].anoLancamento << endl;
@@ -114,18 +114,20 @@ void atualizacaoDados (game* jogos, int tam) {
 	int resposta;
 	cin >> resposta;
 	if (resposta != 1) {
+		cout << "Nada foi alterado" << endl;
 		return;
 	}
 
 	ofstream saida("saida.dat", ios::binary);
 	for (int i = 0; i < tam; i++) {
-		if (i == id) {
+		if (jogos[i].id == id) {
 			saida.write ((const char *) (&novoJogo), sizeof(game));
 		} else {
 			saida.write ((const char *) (&jogos[i]), sizeof(game));
 		}
 	}
 	saida.close();
+	cout << "Tudo alterado com sucesso!" << endl;
 }
 
 // Subprograma para uma busca de um ou mais jogos dado um certo ano requisitado pelo usuário
