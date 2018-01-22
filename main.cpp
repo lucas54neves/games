@@ -145,7 +145,8 @@ int main () {
 			default:
 				cout << "Teste para opção não cadastrada" << endl;
 		}
-		cout << "Pressione qualquer botão para continuar." << endl;
-		getchar();
+		cout << "Pressione enter para continuar..."; 
+		cin.ignore();
+		cin.get();
 	}
 }
