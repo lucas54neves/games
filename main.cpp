@@ -1,4 +1,3 @@
-
 // Bibliotecas
 #include <iostream>
 #include <string>
@@ -67,17 +66,36 @@ void insercaoDados () {
 	saida.close();
 	
 	cout << "Inserido com sucesso!" << endl;
-	/*
-    ofstream arquivo("RegistroDosJogos.txt", ios::app);
-    arquivo << dadosGame.nome;
-    arquivo << dadosGame.anoLancamento;
-    arquivo << dadosGame.plataforma;
-    arquivo << dadosGame.descricao;
-    arquivo.close();
-	*/
+
 }
 // Subprograma para a atualização dos dados cadastrados
-void atualizacaoDados () {}
+void atualizacaoDados () {
+		
+	cout << "Nome do jogo a ser atualizado: ";
+	cin >> dadosGame[0].nome;
+	
+	for (int i = 0; i < limite-1; i++) {
+		for (int j = 1; j < limite; j++) {
+			if (dadosGame[i].nome == dadosGame[j].nome) { //aqui o procuro o valor antigo pra poder desativá-lo na linha de baixo
+				
+			}
+		}
+	}
+	
+	cout << "Ano de Lançamento: ";
+	cin >> dadosGame[0].anoLancamento;
+	cout << "Plataforma: ";
+	cin >> dadosGame[0].plataforma;
+	cout << "Descrição: ";
+	cin >> dadosGame[0].descricao;
+
+	ofstream saida("saida.dat", ios::binary|ios::app);
+	saida.write ((const char *) (&dadosGame[0]), sizeof(game));
+	saida.close();
+	
+	cout << "Atualizado com sucesso!" << endl;
+
+}
 // Subprograma para uma busca de um ou mais jogos dado um certo ano requisitado pelo usuário
 void buscaDados (game dadosGame[], int limite) {
 	int anoBuscado, j = 0;
@@ -122,7 +140,7 @@ int main () {
 			 << "1 para inserção de dados" << endl
 			 << "2 para atualização de dados" << endl
 			 << "3 para busca de dados" << endl
-			 << "4 para listagem dos dados cadastrados em ordem crescente" << endl
+			 << "4 para listagem dos dados cadastrados em ordem crescente por ano" << endl
 			 << "0 para sair" << endl;
 		cin >> opcao;
 		switch (opcao) {
