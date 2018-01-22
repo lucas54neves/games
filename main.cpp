@@ -77,15 +77,22 @@ void atualizacaoDados () {}
 void buscaDados (game dadosGame[], int limite) {
 	int anoBuscado, j = 0;
 	game aux[limite];
+	bool achou = false;
 	cout << "Digite o ano que deseja buscar: ";
 	cin >> anoBuscado;
 	for (int i = 0; i < limite; i++) {
 		if (dadosGame[i].anoLancamento == anoBuscado) {
 			aux[j++] = dadosGame[i];
+			achou = true;
 		}
 	}
-	print(aux, j);
+	if (achou) {
+		print(aux, j);
+	} else {
+		cout << "Nenhum dado encontrado." << endl;
+	}
 }
+	
 // Subprograma para a ordenação dos dados cadastrados
 void ordenacaoDadosCadastrados (game dadosGame[], int limite)
 {
