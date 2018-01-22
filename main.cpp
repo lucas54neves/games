@@ -1,4 +1,3 @@
-
 // Bibliotecas
 #include <iostream>
 #include <string>
@@ -11,6 +10,7 @@ using namespace std;
 // Registro para o game
 struct game
 {
+	int id;
 	char nome[100];
 	int anoLancamento;
 	char plataforma[100];
@@ -34,15 +34,15 @@ game* lerArquivo(int* tamanho) {
 		}   
 		entrada.close();
 		*tamanho = qtd;
-	} else {
-		cout << "Erro na abertura do arquivo.";
 	}
+
 	return bloco;
 }
 // Subprograma para a impressão à tela de um vetor de game 
 void print (game dadosGame[], int quant) {
 	cout << "_______________________________________________" << endl;
 	for (int i = 0; i < quant; i++) {
+		cout << "ID: " << dadosGame[i].id << endl;
 		cout << "Nome: " << dadosGame[i].nome << endl;
 		cout << "Ano de Lançamento: " << dadosGame[i].anoLancamento << endl;
 		cout << "Plataforma: " << dadosGame[i].plataforma << endl;
@@ -51,7 +51,7 @@ void print (game dadosGame[], int quant) {
 	}
 }
 // Subprograma para inserir os dados de um jogo (somente 1 por chamada)
-void insercaoDados () {
+void insercaoDados (int tam) {
 	game* jogo = new game [1];
 	
 	cout << "Nome do jogo: ";
@@ -64,6 +64,7 @@ void insercaoDados () {
 	cin.getline(jogo[0].plataforma, 100);
 	cout << "Descrição: ";
 	cin.getline(jogo[0].descricao, 700);
+	jogo[0].id = tam+1;
 
 	ofstream saida("saida.dat", ios::binary|ios::app);
 	saida.write ((const char *) (&jogo[0]), sizeof(game));
@@ -72,7 +73,59 @@ void insercaoDados () {
 	cout << "Inserido com sucesso!" << endl;
 }
 // Subprograma para a atualização dos dados cadastrados
-void atualizacaoDados () {}
+void atualizacaoDados (game* jogos, int tam) {
+	int id;
+	cout << "Qual ID você deseja atualizar? ";
+	cin >> id;
+
+	int indice;
+	for (int i = 0; i < tam; i++) {
+		if (jogos[i].id == id) {
+			indice = i;
+		}
+	}
+
+	game novoJogo;
+	cout << "Novo nome de " << jogos[indice].nome << ": ";
+	cin.ignore();
+	cin.getline(novoJogo.nome, 100);
+	cout << "Novo ano de lançamento de " << jogos[indice].nome << ": ";
+	cin >> novoJogo.anoLancamento;
+	cin.ignore();
+	cout << "Nova plataforma de " << jogos[indice].nome << ": ";
+	cin.getline(novoJogo.plataforma, 100);
+	cout << "Nova descricao de " << jogos[indice].nome << ": ";
+	cin.getline(novoJogo.descricao, 700);
+	novoJogo.id = id;
+	system("clear");
+
+	cout << "Vossa senhoria tem certeza que deseja atualizar os seguintes dados: " << endl;
+	cout << novoJogo.nome << " >> " << jogos[indice].nome << endl;
+	cout << novoJogo.descricao << " >> " << jogos[indice].descricao << endl;
+	cout << novoJogo.anoLancamento << " >> " << jogos[indice].anoLancamento << endl;
+	cout << novoJogo.plataforma << " >> " << jogos[indice].plataforma << endl;
+	
+	
+	cout << "--Legenda--" << endl;
+	cout << "0 - Não" << endl;
+	cout << "1 - Sim" << endl;
+	int resposta;
+	cin >> resposta;
+	if (resposta != 1) {
+		return;
+	}
+
+	ofstream saida("saida.dat", ios::binary);
+	for (int i = 0; i < tam; i++) {
+		if (i == id) {
+			saida.write ((const char *) (&novoJogo), sizeof(game));
+		} else {
+			saida.write ((const char *) (&jogos[i]), sizeof(game));
+		}
+	}
+	saida.close();
+}
+
 // Subprograma para uma busca de um ou mais jogos dado um certo ano requisitado pelo usuário
 void buscaDados (game dadosGame[], int limite) {
 	int anoBuscado, j = 0;
@@ -117,7 +170,7 @@ int main () {
 	int opcao=-1;
 	game *dadosGame;
 	int tam;
-	
+
 	while (opcao!=0) {
 		system("clear");
 		cout << "Entre com a operação desejada" << endl
@@ -127,30 +180,29 @@ int main () {
 			 << "4 para listagem dos dados cadastrados em ordem crescente" << endl
 			 << "0 para sair" << endl;
 		cin >> opcao;
+
+		dadosGame = lerArquivo(&tam);
 		switch (opcao) {
 			case 1:
-				insercaoDados();
+				insercaoDados(tam);
 				break;
 			case 2:
-				atualizacaoDados();
+				atualizacaoDados(dadosGame, tam);
 				break;
 			case 3:
-				dadosGame = lerArquivo(&tam);
 				buscaDados(dadosGame, tam);
 				break;
 			case 4:
-				dadosGame = lerArquivo(&tam);
 				ordenacaoDadosCadastrados(dadosGame, tam);
 				print(dadosGame, tam);
 				break;
 			case 5:
-				dadosGame = lerArquivo(&tam);
 				print(dadosGame, tam);
 				break;
 			case 0:
 				return 0;
 			default:
-				cout << "Teste para opção não cadastrada" << endl;
+				cout << "Opção não cadastrada" << endl;
 		}
 		cout << "Pressione enter para continuar..."; 
 		cin.ignore();
