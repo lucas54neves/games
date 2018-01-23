@@ -114,7 +114,7 @@ void atualizacaoDados (game* jogos, int tam) {
 	system("clear");
 
 	//Controle para confirmação da alteração
-	cout << "Vossa senhoria tem certeza que deseja atualizar os seguintes dados: " << endl;
+	cout << "Você tem certeza que deseja atualizar os seguintes dados: " << endl;
 	cout << jogos[indice].nome << " >> "<< novoJogo.nome << endl;
 	cout << jogos[indice].descricao << " >> " << novoJogo.descricao << endl;
 	cout << jogos[indice].anoLancamento << " >> " << novoJogo.anoLancamento << endl;
